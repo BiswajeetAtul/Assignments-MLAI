@@ -6,7 +6,7 @@
 # ## 1. predict which customers are at high risk of churn.
 # ## 2. identify the main indicators of churn.
 
-# In[1]:
+# In[10]:
 
 
 import numpy as np
@@ -18,54 +18,54 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 get_ipython().run_line_magic('config', 'IPCompleter.greedy=True')
 
 
-# In[2]:
+# In[11]:
 
 
 #to Suppress unnecessary warnings
 warnings.filterwarnings("ignore")
 
 
-# In[11]:
+# In[12]:
 
 
 teleDataFile=r'telecom_churn_data.csv'
 
 
-# In[12]:
+# In[13]:
 
 
 teleData= pd.read_csv(teleDataFile)
 
 
-# In[20]:
+# In[14]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     print(teleData.info(verbose=True,null_counts =True))
 
 
-# In[17]:
+# In[15]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     display(teleData.describe())
 
 
-# In[23]:
+# In[16]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     display(teleData.head(5))
 
 
-# In[26]:
+# In[17]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
         display(teleData.nunique(axis=0,dropna=False))
 
 
-# In[30]:
+# In[18]:
 
 
 for col in list(teleData.columns):
