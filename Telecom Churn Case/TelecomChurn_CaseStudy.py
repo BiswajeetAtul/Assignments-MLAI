@@ -18,6 +18,8 @@ import warnings
 import seaborn as sns
 get_ipython().run_line_magic('matplotlib', 'inline')
 get_ipython().run_line_magic('config', 'IPCompleter.greedy=True')
+from sklearn.decomposition import IncrementalPCA
+from sklearn.decomposition import PCA
 
 
 # Code to filter unnecessary warnings
@@ -81,7 +83,7 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
         display(teleData.nunique(axis=0,dropna=False))
 
 
-# we can see that there area columns with 1 or 2 unique values to as high as 82k unique values(not taking into account the mobile_number which ofcourse will have unique values) 
+# we can see that there are columns with 1 or 2 unique values to as high as 82k unique values(not taking into account the mobile_number which ofcourse will have unique values) 
 # 
 # Printing all the unique values for columns with less then 100 unique values including null/nan:
 
@@ -93,6 +95,238 @@ for col in list(teleData.columns):
     else:
         print(col+":"+str(teleData[col].unique().tolist()))
         print("----------------------------------------------------------------------------------")
+
+
+# Finding the percentage of Null values in each column:
+
+# In[19]:
+
+
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+    print (teleData.isnull().mean())
+
+
+# WE can see that the null values are occuring in pairs. for ex: 
+# 
+# og_others and ic_others
+# 1. og_others_6    --             0.039370 => ic_others_6      --           0.039370
+# 2. og_others_7    --             0.038590 => ic_others_7      --           0.038590
+# 3. og_others_8    --             0.053781 => ic_others_8      --           0.053781
+# 4. og_others_9    --             0.077451 => ic_others_9      --           0.077451
+# 
+# Same is the case for onnet_mou,offnet_mou,roam_ic_mou,roam_og_mou,loc_og_t2t_mou,loc_og_mou,std_og_t2t_mou,std_og_t2m_mou,std_og_t2f_mou,std_og_t2c_mou,std_og_mou,isd_og_mou,spl_og_mou,og_others,loc_ic_t2t_mou,loc_ic_t2m_mou,loc_ic_t2f_mou,loc_ic_mou,std_ic_t2t_mou etc.
+# 
+# Infact all these columns are propagating the null value for the same rows. So we can safely put 0 as the missing value for these rows. 
+
+# # Exploratory Data Analysis
+
+# ## Trend and Outlier detection Univariate and Multivariate Analaysis
+
+# In[53]:
+
+
+fig=plt.figure(figsize=(20,20))
+
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['offnet_mou_6'],teleData['onnet_mou_6'],"b+")
+ax1.set_xlabel("offnet_mou_6")
+ax1.set_ylabel("onnet_mou_6")
+
+ax2.plot(teleData['offnet_mou_7'],teleData['onnet_mou_7'],"r+")
+ax2.set_xlabel("offnet_mou_7")
+ax2.set_ylabel("onnet_mou_7")
+
+ax3.plot(teleData['offnet_mou_8'],teleData['onnet_mou_8'],"g+")
+ax3.set_xlabel("offnet_mou_8")
+ax3.set_ylabel("onnet_mou_8")
+
+ax4.plot(teleData['offnet_mou_9'],teleData['onnet_mou_9'],"y+")
+ax4.set_xlabel("offnet_mou_9")
+ax4.set_ylabel("onnet_mou_9")
+plt.show()
+
+
+# In[58]:
+
+
+fig=plt.figure(figsize=(20,20))
+
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['og_others_6'],teleData['ic_others_6'],"b+")
+ax1.set_xlabel("og_others_6")
+ax1.set_ylabel("ic_others_6")
+
+ax2.plot(teleData['og_others_7'],teleData['ic_others_7'],"r+")
+ax2.set_xlabel("og_others_7")
+ax2.set_ylabel("ic_others_7")
+
+ax3.plot(teleData['og_others_8'],teleData['ic_others_8'],"g+")
+ax3.set_xlabel("og_others_8")
+ax3.set_ylabel("ic_others_8")
+
+ax4.plot(teleData['og_others_9'],teleData['ic_others_9'],"y+")
+ax4.set_xlabel("og_others_9")
+ax4.set_ylabel("ic_others_9")
+plt.show()
+
+
+# In[66]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['date_of_last_rech_6'].fillna('6/30/2014'),teleData['onnet_mou_6'],"bo")
+ax2.plot(teleData['date_of_last_rech_6'].fillna('6/30/2014'),teleData['offnet_mou_6'],"ro")
+
+
+ax3.plot(teleData['date_of_last_rech_7'].fillna('7/30/2014'),teleData['onnet_mou_7'],"bo")
+ax4.plot(teleData['date_of_last_rech_7'].fillna('7/30/2014'),teleData['offnet_mou_7'],"ro")
+
+plt.show()
+
+
+# In[65]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['arpu_6'],"bo")
+ax2.plot(teleData['arpu_7'],"r+")
+ax3.plot(teleData['arpu_8'],"b^")
+ax4.plot(teleData['arpu_9'],"r*")
+
+plt.show()
+
+
+# In[67]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['arpu_3g_6'],"bo")
+ax2.plot(teleData['arpu_3g_7'],"r+")
+ax3.plot(teleData['arpu_3g_8'],"b^")
+ax4.plot(teleData['arpu_3g_9'],"r*")
+
+plt.show()
+
+
+# In[68]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['arpu_2g_6'],"bo")
+ax2.plot(teleData['arpu_2g_7'],"r+")
+ax3.plot(teleData['arpu_2g_8'],"b^")
+ax4.plot(teleData['arpu_2g_9'],"r*")
+
+plt.show()
+
+
+# In[69]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['monthly_2g_6'],teleData['vol_2g_mb_6'],"bo")
+ax2.plot(teleData['monthly_2g_7'],teleData['vol_2g_mb_7'],"r+")
+ax3.plot(teleData['monthly_2g_8'],teleData['vol_2g_mb_8'],"b^")
+ax4.plot(teleData['monthly_2g_9'],teleData['vol_2g_mb_9'],"r*")
+
+plt.show()
+
+
+# In[70]:
+
+
+fig=plt.figure(figsize=(20,20))
+((ax1, ax2), (ax3, ax4)) = fig.subplots(2, 2)
+
+ax1.plot(teleData['monthly_3g_6'],teleData['vol_3g_mb_6'],"bo")
+ax2.plot(teleData['monthly_3g_7'],teleData['vol_3g_mb_7'],"r+")
+ax3.plot(teleData['monthly_3g_8'],teleData['vol_3g_mb_8'],"b^")
+ax4.plot(teleData['monthly_3g_9'],teleData['vol_3g_mb_9'],"r*")
+
+plt.show()
+
+
+# ## Data Imputation
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# ## Outlier Treatment
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# ## Feature Engineering
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+correlationMatrix=teleData_HighValuesCustomers_Final.corr()
+
+
+# In[ ]:
+
+
+with pd.option_context('display.max_rows', None, 'display.max_columns', None):
+    display(correlationMatrix)
+
+
+# In[ ]:
+
+
+print(correlationMatrix.max())
+print(correlationMatrix.min() )
+
+
+# In[71]:
+
+
+plt.figure(figsize=(20, 12))
+#plt.subplot(321)
+sns.boxplot(x = 'arpu_6', y = 'churned_tag', data = teleData_HighValuesCustomers_Final)
+plt.show()
 
 
 # # Data Preperation
@@ -109,20 +343,20 @@ for col in list(teleData.columns):
 # 3. arpu_8        ---              99999 non-null float64
 # 4. arpu_9        ---              99999 non-null float64
 
-# In[10]:
+# In[ ]:
 
 
 teleData['avg_6_7_revenue']=(teleData["arpu_6"]+teleData["arpu_7"])/2
 
 
-# In[12]:
+# In[ ]:
 
 
 percentile70th= teleData['avg_6_7_revenue'].quantile(0.70)
 print("The 70th percentile average revenue is "+ str(percentile70th))
 
 
-# In[13]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers= teleData[teleData['avg_6_7_revenue']>=percentile70th]
@@ -131,7 +365,7 @@ teleData_HighValuesCustomers.shape
 
 # Taking a look into the High Valued customers dataset:
 
-# In[16]:
+# In[ ]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
@@ -140,7 +374,7 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 
 # Now making all Null values 0.
 
-# In[18]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers_Treated=teleData_HighValuesCustomers.fillna(0)
@@ -156,7 +390,7 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 # 3. vol_2g_mb_9
 # 4. vol_3g_mb_9
 
-# In[35]:
+# In[ ]:
 
 
 filter=((teleData_HighValuesCustomers_Treated['total_ic_mou_9']==0)&(teleData_HighValuesCustomers_Treated['vol_2g_mb_9']==0)&(teleData_HighValuesCustomers_Treated['vol_3g_mb_9']==0)&(teleData_HighValuesCustomers_Treated['total_og_mou_9']==0))
@@ -164,7 +398,7 @@ teleData_HighValuesCustomers_Treated['churned_tag']=np.where(filter, 1, 0)
 teleData_HighValuesCustomers_Treated['churned_tag'].sum()
 
 
-# In[26]:
+# In[ ]:
 
 
 #filter=((teleData_HighValuesCustomers_Treated['total_ic_mou_9']==0)&(teleData_HighValuesCustomers_Treated['vol_2g_mb_9']==0)&(teleData_HighValuesCustomers_Treated['vol_3g_mb_9']==0)&(teleData_HighValuesCustomers_Treated['total_og_mou_9']==0))
@@ -172,7 +406,7 @@ teleData_HighValuesCustomers_Treated['churned_tag'].sum()
 #display(tagged.index)
 
 
-# In[33]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers_Treated.head(5)
@@ -183,7 +417,7 @@ teleData_HighValuesCustomers_Treated.head(5)
 # 
 # Removing all columns that have '_9' in them.
 
-# In[51]:
+# In[ ]:
 
 
 print(len([x for x in teleData_HighValuesCustomers_Treated.columns if '_9' in x]))
@@ -191,19 +425,19 @@ print(len(teleData_HighValuesCustomers_Treated.columns))
 teleData_HighValuesCustomers_Treated.shape
 
 
-# In[53]:
+# In[ ]:
 
 
 colsToDrop=[x for x in teleData_HighValuesCustomers_Treated.columns if '_9' in x]
 
 
-# In[54]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers_Tagged=teleData_HighValuesCustomers_Treated.drop(colsToDrop,axis=1)
 
 
-# In[55]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers_Tagged.shape
@@ -212,7 +446,7 @@ teleData_HighValuesCustomers_Tagged.shape
 # Now we have removed all the columns that are related to the churn phase.
 # Lets have a look at the dataset now.
 
-# In[57]:
+# In[ ]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
@@ -223,22 +457,62 @@ with pd.option_context('display.max_rows', None, 'display.max_columns', None):
 # 
 # creating a new dataset _naDates 
 
-# In[58]:
+# In[ ]:
 
 
 teleData_HighValuesCustomers_naDates=teleData_HighValuesCustomers_Tagged.drop([x for x in teleData_HighValuesCustomers_Tagged.columns if 'date' in x],axis=1)
 teleData_HighValuesCustomers_naDates.shape
 
 
-# In[59]:
+# In[ ]:
 
 
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     display(teleData_HighValuesCustomers_naDates.head(5))
 
 
+# Now lets see what are the values in the columns, we will not need the columns that have single values so we will drop them
+
 # In[ ]:
 
 
+for col in list(teleData_HighValuesCustomers_naDates.columns):
+    if(teleData_HighValuesCustomers_naDates[col].nunique()>100 ): continue
+    else:
+        print(col+":"+str(teleData_HighValuesCustomers_naDates[col].unique().tolist()))
+        print("----------------------------------------------------------------------------------")
 
+
+# In[ ]:
+
+
+singleValuedColumnsDict={}
+for col in list(teleData_HighValuesCustomers_naDates.columns):
+    if(teleData_HighValuesCustomers_naDates[col].nunique()==1 ):
+        singleValuedColumnsDict[col]=teleData_HighValuesCustomers_naDates[col].unique().tolist()[0]
+print(singleValuedColumnsDict)
+
+
+# Dropping these columns
+
+# In[ ]:
+
+
+teleData_HighValuesCustomers_Final= teleData_HighValuesCustomers_naDates.drop(list(singleValuedColumnsDict.keys()),axis=1)
+teleData_HighValuesCustomers_Final.shape
+
+
+# # PCA
+
+# In[ ]:
+
+
+pca_churn = PCA(0.95)
+
+
+# In[ ]:
+
+
+df_train_pca = pca_again.fit_transform(X_train)
+df_train_pca.shape
 
