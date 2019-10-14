@@ -5,13 +5,14 @@
     <ProjectGuid>e58a7fee-d1a9-4cdc-85ef-9e4991a2aec3</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Chatbot_RestroSearch_Upgrad.py</StartupFile>
+    <StartupFile>Chatbot_App.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>Chatbot_Restro</Name>
     <RootNamespace>Chatbot_RestroSearch_Upgrad</RootNamespace>
+    <InterpreterId>CondaEnv|CondaEnv|RasaEnv</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,7 +23,23 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Chatbot_RestroSearch_Upgrad.py" />
+    <Compile Include="Chatbot_App.py" />
+    <Compile Include="MailModule.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Nlu_model.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ZomatoAPI.py">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <InterpreterReference Include="CondaEnv|CondaEnv|RasaEnv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLU_model_Config.yml" />
+    <Content Include="NLU_Train.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
