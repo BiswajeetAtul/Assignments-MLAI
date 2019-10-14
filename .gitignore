@@ -5,3 +5,5 @@
 *.txt
 *.zip
 *.rar
+
+/ChatBot RASA/Rasa_basic_folder/*
