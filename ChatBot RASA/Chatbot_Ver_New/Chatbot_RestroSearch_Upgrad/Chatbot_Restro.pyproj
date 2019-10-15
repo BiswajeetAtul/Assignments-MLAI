@@ -24,6 +24,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Chatbot_App.py" />
+    <Compile Include="Core_Train.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Custom_Action.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MailModule.py">
       <SubType>Code</SubType>
     </Compile>
@@ -38,8 +44,10 @@
     <InterpreterReference Include="CondaEnv|CondaEnv|RasaEnv" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Core_Stories.md" />
     <Content Include="NLU_model_Config.yml" />
     <Content Include="NLU_Train.md" />
+    <Content Include="ReadMe.md" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
