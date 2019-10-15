@@ -4,8 +4,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def SendEmail(To="To Email address",message="This is the body of the Mail"):
-    MY_ADDRESS = 'chatbotZomatoApp@gmail.comm'
-    PASSWORD = 'pass1234'   
+    MY_ADDRESS = 'upgradchatbotAssignment2914@gmail.comm'
+    PASSWORD = 'pass1234'
 
     msg = MIMEMultipart()       # create a message
 
