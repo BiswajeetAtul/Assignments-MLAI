@@ -8,7 +8,7 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
-    - action_restaurant
+    - ActionSearchRestaurants
     - slot{"location": "delhi"}
     - utter_goodbye
     - export
@@ -23,7 +23,7 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "North Indian"}
     - slot{"cuisine": "North Indian"}
-    - action_restaurant
+    - ActionSearchRestaurants
     - utter_goodbye
 
 ## Generated Story 3320800183399695936
@@ -36,7 +36,7 @@
 	- utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
-    - action_restaurant
+    - ActionSearchRestaurants
 * goodbye
     - utter_goodbye
 
@@ -50,7 +50,7 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
-    - action_restaurant
+    - ActionSearchRestaurants
     - slot{"location": "delhi"}
     - export
 
@@ -63,7 +63,7 @@
     - utter_ask_cuisine
 * restaurant_search{"cuisine": "chinese"}
     - slot{"cuisine": "chinese"}
-    - action_restaurant
+    - ActionSearchRestaurants
 * affirm
     - utter_goodbye
     - export

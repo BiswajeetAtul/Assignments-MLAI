@@ -1,0 +1,79 @@
+%YAML 1.1
+---
+actions:
+- utter_greet
+- utter_goodbye
+- utter_default
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_cuisine
+- utter_ask_budgetfortwo
+- ActionSearchRestaurants
+- SendMail
+config:
+  store_entities_as_slots: true
+entities:
+- location
+- cuisine
+forms: []
+intents:
+- greet:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- thankyou:
+    use_entities: true
+- restaurant_search:
+    use_entities: true
+- send_mail:
+    use_entities: true
+- bugdet_set:
+    use_entities: true
+slots:
+  budget:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  cuisine:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  location:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  sendmail:
+    auto_fill: true
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_ask_budget:
+  - text: Max Budget for two?
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: South Indian
+      title: South Indian
+    - title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In which location?
+  utter_default:
+  - text: Sorry! I could not understand!
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  - text: See ya!
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today

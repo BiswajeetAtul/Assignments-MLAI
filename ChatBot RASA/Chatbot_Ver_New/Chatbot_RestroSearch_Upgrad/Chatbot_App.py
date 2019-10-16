@@ -33,13 +33,9 @@ fallback = FallbackPolicy(fallback_action_name="utter_default",
                           core_threshold=0.2,
                           nlu_threshold=0.1)
 
-agent = Agent('restaurant_domain.yml', policies=[MemoizationPolicy(), KerasPolicy(), fallback])
+agent = Agent(domain='restaurant_domain.yml', policies=[MemoizationPolicy(), KerasPolicy(validation_split=0.0,epochs=200), fallback])
 training_data = agent.load_data('Core_Stories.md')
-agent.train(
-    training_data,
-    validation_split=0.0,
-    epochs=200
-)
+agent.train(training_data)
 agent.persist('models/dialogue')
 print("Done")
 print("STEP 3: Starting the Bot")

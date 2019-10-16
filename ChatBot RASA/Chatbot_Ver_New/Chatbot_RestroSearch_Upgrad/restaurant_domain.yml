@@ -61,5 +61,5 @@ actions:
 - utter_ask_location
 - utter_ask_cuisine
 - utter_ask_budgetfortwo
-- actions.ActionSearchRestaurants
-- actions.SendMail
+- ActionSearchRestaurants
+- SendMail
