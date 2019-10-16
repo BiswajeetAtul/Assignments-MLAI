@@ -17,7 +17,7 @@ class ZomatoApi:
             category_name (string): Name of the category type
         }
         '''
-        response= requests.get(url=self.api_url+"categories",headers=header)
+        response= requests.get(url=self.api_url+"categories",headers=self.header)
 
 
     def GetCities(self,city="",city_id=""):
@@ -41,7 +41,7 @@ class ZomatoApi:
             task={"q": city}
 
         #response= requests.get(self.api_url+"cities",headers=header,params=task)
-        response=requests.get(url=self.api_url+"cities",headers=header,params=task)
+        response=requests.get(url=self.api_url+"cities",headers=self.header,params=task)
         
     
     #def GetCollections(self):
@@ -58,7 +58,7 @@ class ZomatoApi:
 
         '''
         task={"city_id":city_id}
-        response= requests.get(self.api_url+"cuisines",headers=header,params=task)
+        response= requests.get(self.api_url+"cuisines",headers=self.header,params=task)
         
 
     def GetEstablishmentTypes(self):
@@ -68,15 +68,15 @@ class ZomatoApi:
             establishment_name (string): Name of the establishment type
         }
         '''
-
-        response= requests.get(self.api_url+"establishments",headers=header,params=task)
+        task={}
+        response= requests.get(self.api_url+"establishments",headers=self.header,params=task)
         
     
     def GetFoodieNightLifeIndex(self):
         # Finds NightLife Index
         # Using location_details
-
-        response= requests.get(self.api_url+"location_details",headers=header,params=task)
+        task={}
+        response= requests.get(self.api_url+"location_details",headers=self.header,params=task)
         
 
     def GetLocations(self,location_id, location_type):
@@ -95,8 +95,8 @@ class ZomatoApi:
         }
 
         '''
-        task={"entity_id":location, "entity_type":location_type}
-        response= requests.get(self.api_url+"locations",headers=header,params=task)
+        task={"entity_id":location_id, "entity_type":location_type}
+        response= requests.get(self.api_url+"locations",headers=self.header,params=task)
         
 
     
@@ -118,12 +118,13 @@ class ZomatoApi:
             price (string, optional): Menu Item Price
         }
         '''
-
-        response= requests.get(self.api_url+"dailymenu",headers=header,params=task)
+        task={}
+        response= requests.get(self.api_url+"dailymenu",headers=self.header,params=task)
         
     
     def GetRestroInfo(self):
-        response= requests.get(self.api_url+"restaurant",headers=header,params=task)
+        task={}
+        response= requests.get(self.api_url+"restaurant",headers=self.header,params=task)
         
 
     def SearchRestros(self,restro_id):
@@ -207,7 +208,7 @@ class ZomatoApi:
         '''
 
         task={"res_id":restro_id}
-        response= requests.get(self.api_url+"reviews",headers=header,params=task)
+        response= requests.get(self.api_url+"reviews",headers=self.header,params=task)
         
 
     def GetReviews(self, restro_id):
@@ -239,5 +240,5 @@ class ZomatoApi:
         }
         '''
         task={"res_id":restro_id}
-        response= requests.get(self.api_url+"search",headers=header,params=task)
+        response= requests.get(self.api_url+"search",headers=self.header,params=task)
         

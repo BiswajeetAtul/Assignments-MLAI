@@ -31,7 +31,7 @@
 - bye bye
 - see you later
 
-## intent:mood_affirm
+## intent:affirm
 - yes
 - indeed
 - of course
@@ -41,7 +41,7 @@
 - yep
 - ya
 
-## intent:mood_deny
+## intent:deny
 - no
 - never
 - I don't think so
@@ -54,7 +54,7 @@
 - nah leave it
 
 
-## intent:mood_great
+## intent:thankyou
 - perfect
 - very good
 - great
@@ -99,5 +99,13 @@
 - looking for a dinner spot
 - looking to have lunch
 
+## intent:send_mail
+- send me that in a mail
+- yes send me the mail
+- hit my inbox
+- mail me
+- ping me on mail
 
-"""
+## intent: bugdet_set
+- i need a budget of max rs. 500 for two 
+- how about something around 100?

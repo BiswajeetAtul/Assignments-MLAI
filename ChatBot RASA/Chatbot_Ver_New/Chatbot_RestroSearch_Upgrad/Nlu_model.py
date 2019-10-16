@@ -17,6 +17,7 @@ def StartModelTraining():
     interpreter = trainer.train(training_data)
     # store it for future use
     model_directory = trainer.persist("./models/nlu", fixed_model_name="botModelTrained")
+    return model_directory
 
 def RunNLU():
     interpreter=Interpreter.load('./models/nlu/default/botModelTrained',builder)
