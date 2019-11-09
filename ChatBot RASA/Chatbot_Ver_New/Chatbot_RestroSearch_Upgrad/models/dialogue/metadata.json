@@ -2,17 +2,24 @@
   "action_fingerprints": {
     "action_listen": {
       "slots": [
+        "email",
+        "location",
         "cuisine",
-        "location"
+        "budget"
       ]
     },
-    "utter_goodbye": {
-      "slots": []
+    "action_check_location": {
+      "slots": [
+        "location_match"
+      ]
     },
-    "ActionSearchRestaurants": {
+    "action_restaurant": {
       "slots": [
         "location"
       ]
+    },
+    "action_restart": {
+      "slots": []
     }
   },
   "python": "3.6.9",
@@ -27,7 +34,7 @@
     "rasa_core.policies.keras_policy.KerasPolicy",
     "rasa_core.policies.fallback.FallbackPolicy"
   ],
-  "trained_at": "20191017-022049",
+  "trained_at": "20191020-163922",
   "rasa_core": "0.14.5",
   "tensorflow": "1.13.2",
   "sklearn": "0.20.4"

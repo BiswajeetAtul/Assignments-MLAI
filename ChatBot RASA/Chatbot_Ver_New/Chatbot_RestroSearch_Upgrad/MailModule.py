@@ -4,8 +4,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 def SendEmail(To="To Email address",message="This is the body of the Mail"):
-    MY_ADDRESS = 'upgradchatbotAssignment2914@gmail.comm'
-    PASSWORD = 'pass1234'
+    MY_ADDRESS = 'upgradchatbotassignment2914@gmail.com'
+    PASSWORD = 'ttggvvyyhhbbuujjnn'
 
     msg = MIMEMultipart()       # create a message
 
@@ -29,10 +29,14 @@ def SendEmail(To="To Email address",message="This is the body of the Mail"):
         # sending the mail 
         s.send_message(msg)
 
-    except :
+    except Exception as ex:
+        print(ex)
         print("Unable to send the Email. Please try again later.")
         return  False
     finally:
         # terminating the session 
         s.quit()
     return True
+
+if __name__=="__main__":
+    SendEmail("dknayakbu@gmail.com","mail body")

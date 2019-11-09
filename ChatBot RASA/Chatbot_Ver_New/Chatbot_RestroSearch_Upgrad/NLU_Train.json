@@ -1,95 +1,206 @@
 {
   "rasa_nlu_data": {
+    "regex_features": [
+      {
+        "name": "inform",
+        "pattern": "[0-9]*"
+      },
+      {
+        "name": "greet",
+        "pattern": "hey[^\\s]*"
+      },
+      {
+        "name": "send_email",
+        "pattern": "^\\w+(\\w+)*\\@(\\w+)*\\.(\\w+)*(.(\\w+)*)?$"
+      }
+    ],
+    "entity_synonyms": [
+      {
+        "value": "chinese",
+        "synonyms": [
+          "Chinese",
+          "Chines",
+          "chines"
+        ]
+      },
+      {
+        "value": "bangalore",
+        "synonyms": [
+          "bangalore",
+          "Bengaluru",
+          "bengaluru"
+        ]
+      },
+      {
+        "value": "mumbai",
+        "synonyms": [
+          "mumbai",
+          "bombai",
+          "bombay"
+        ]
+      },
+      {
+        "value": "kolkata",
+        "synonyms": [
+          "kolkata",
+          "Calcutta",
+          "calcutta"
+        ]
+      },
+      {
+        "value": "kochi",
+        "synonyms": [
+          "kochi",
+          "Cochin",
+          "cochin"
+        ]
+      },
+      {
+        "value": "chennai",
+        "synonyms": [
+          "chennai",
+          "madras",
+          "Madras"
+        ]
+      },
+      {
+        "value": "mysore",
+        "synonyms": [
+          "mysore",
+          "mysuru",
+          "Mysuru"
+        ]
+      },
+      {
+        "value": "pune",
+        "synonyms": [
+          "Pune",
+          "poona",
+          "Poona"
+        ]
+      },
+      {
+        "value": "delhi",
+        "synonyms": [
+          "Delhi",
+          "dilli",
+          "new delhi"
+        ]
+      }
+    ],
     "common_examples": [
       {
+        "text": "hey",
         "intent": "greet",
-        "text": "hey"
+        "entities": []
       },
       {
+        "text": "howdy",
         "intent": "greet",
-        "text": "howdy"
+        "entities": []
       },
       {
+        "text": "hey there",
         "intent": "greet",
-        "text": "hey there"
+        "entities": []
       },
       {
+        "text": "hello",
         "intent": "greet",
-        "text": "hello"
+        "entities": []
       },
       {
+        "text": "hi",
         "intent": "greet",
-        "text": "hi"
+        "entities": []
       },
       {
+        "text": "good morning",
         "intent": "greet",
-        "text": "good morning"
+        "entities": []
       },
       {
+        "text": "good evening",
         "intent": "greet",
-        "text": "good evening"
+        "entities": []
       },
       {
+        "text": "dear sir",
         "intent": "greet",
-        "text": "dear sir"
+        "entities": []
       },
       {
+        "text": "yes",
         "intent": "affirm",
-        "text": "yes"
+        "entities": []
       },
       {
+        "text": "yep",
         "intent": "affirm",
-        "text": "yep"
+        "entities": []
       },
       {
+        "text": "yeah",
         "intent": "affirm",
-        "text": "yeah"
+        "entities": []
       },
       {
+        "text": "indeed",
         "intent": "affirm",
-        "text": "indeed"
+        "entities": []
       },
       {
+        "text": "that's right",
         "intent": "affirm",
-        "text": "that's right"
+        "entities": []
       },
       {
+        "text": "ok",
         "intent": "affirm",
-        "text": "ok"
+        "entities": []
       },
       {
+        "text": "great",
         "intent": "affirm",
-        "text": "great"
+        "entities": []
       },
       {
+        "text": "right, thank you",
         "intent": "affirm",
-        "text": "right, thank you"
+        "entities": []
       },
       {
+        "text": "correct",
         "intent": "affirm",
-        "text": "correct"
+        "entities": []
       },
       {
+        "text": "great choice",
         "intent": "affirm",
-        "text": "great choice"
+        "entities": []
       },
       {
+        "text": "sounds really good",
         "intent": "affirm",
-        "text": "sounds really good"
+        "entities": []
       },
       {
+        "text": "i'm looking for a place to eat",
         "intent": "inform",
-        "text": "i'm looking for a place to eat"
+        "entities": []
       },
       {
+        "text": "I want to grab lunch",
         "intent": "inform",
-        "text": "I want to grab lunch"
+        "entities": []
       },
       {
+        "text": "I am searching for a dinner spot",
         "intent": "inform",
-        "text": "I am searching for a dinner spot"
+        "entities": []
       },
       {
+        "text": "i'm looking for a place in the north of town",
         "intent": "inform",
         "entities": [
           {
@@ -98,10 +209,10 @@
             "value": "north",
             "entity": "location"
           }
-        ],
-        "text": "i'm looking for a place in the north of town"
+        ]
       },
       {
+        "text": "show me chinese restaurants",
         "intent": "inform",
         "entities": [
           {
@@ -110,10 +221,10 @@
             "value": "chinese",
             "entity": "cuisine"
           }
-        ],
-        "text": "show me chinese restaurants"
+        ]
       },
       {
+        "text": "show me chines restaurants in the north",
         "intent": "inform",
         "entities": [
           {
@@ -128,10 +239,10 @@
             "value": "north",
             "entity": "location"
           }
-        ],
-        "text": "show me chines restaurants in the north"
+        ]
       },
       {
+        "text": "show me a mexican place in the centre",
         "intent": "inform",
         "entities": [
           {
@@ -146,10 +257,10 @@
             "value": "mexican",
             "entity": "cuisine"
           }
-        ],
-        "text": "show me a mexican place in the centre"
+        ]
       },
       {
+        "text": "i am looking for an indian spot called olaolaolaolaolaola",
         "intent": "inform",
         "entities": [
           {
@@ -158,14 +269,15 @@
             "value": "indian",
             "entity": "cuisine"
           }
-        ],
-        "text": "i am looking for an indian spot called olaolaolaolaolaola"
+        ]
       },
       {
+        "text": "search for restaurants",
         "intent": "inform",
-        "text": "search for restaurants"
+        "entities": []
       },
       {
+        "text": "anywhere in the west",
         "intent": "inform",
         "entities": [
           {
@@ -174,10 +286,10 @@
             "value": "west",
             "entity": "location"
           }
-        ],
-        "text": "anywhere in the west"
+        ]
       },
       {
+        "text": "anywhere near 18328",
         "intent": "inform",
         "entities": [
           {
@@ -186,10 +298,10 @@
             "value": "18328",
             "entity": "location"
           }
-        ],
-        "text": "anywhere near 18328"
+        ]
       },
       {
+        "text": "I am looking for asian fusion food",
         "intent": "inform",
         "entities": [
           {
@@ -198,10 +310,10 @@
             "value": "asian fusion",
             "entity": "cuisine"
           }
-        ],
-        "text": "I am looking for asian fusion food"
+        ]
       },
       {
+        "text": "I am looking a restaurant in 29432",
         "intent": "inform",
         "entities": [
           {
@@ -210,10 +322,10 @@
             "value": "29432",
             "entity": "location"
           }
-        ],
-        "text": "I am looking a restaurant in 29432"
+        ]
       },
       {
+        "text": "in London",
         "intent": "inform",
         "entities": [
           {
@@ -222,10 +334,10 @@
             "value": "London",
             "entity": "location"
           }
-        ],
-        "text": "in London"
+        ]
       },
       {
+        "text": "South Indian",
         "intent": "inform",
         "entities": [
           {
@@ -234,10 +346,10 @@
             "value": "South Indian",
             "entity": "cuisine"
           }
-        ],
-        "text": "South Indian"
+        ]
       },
       {
+        "text": "North Indian",
         "intent": "inform",
         "entities": [
           {
@@ -246,10 +358,10 @@
             "value": "North Indian",
             "entity": "cuisine"
           }
-        ],
-        "text": "North Indian"
+        ]
       },
       {
+        "text": "Italian",
         "intent": "inform",
         "entities": [
           {
@@ -258,10 +370,10 @@
             "value": "Italian",
             "entity": "cuisine"
           }
-        ],
-        "text": "Italian"
+        ]
       },
       {
+        "text": "Chinese",
         "intent": "inform",
         "entities": [
           {
@@ -270,10 +382,10 @@
             "value": "chinese",
             "entity": "cuisine"
           }
-        ],
-        "text": "Chinese"
+        ]
       },
       {
+        "text": "chinese",
         "intent": "inform",
         "entities": [
           {
@@ -282,10 +394,10 @@
             "value": "chinese",
             "entity": "cuisine"
           }
-        ],
-        "text": "chinese"
+        ]
       },
       {
+        "text": "Lithuania",
         "intent": "inform",
         "entities": [
           {
@@ -294,10 +406,10 @@
             "value": "Lithuania",
             "entity": "location"
           }
-        ],
-        "text": "Lithuania"
+        ]
       },
       {
+        "text": "Oh, sorry, in Italy",
         "intent": "inform",
         "entities": [
           {
@@ -306,10 +418,10 @@
             "value": "Italy",
             "entity": "location"
           }
-        ],
-        "text": "Oh, sorry, in Italy"
+        ]
       },
       {
+        "text": "in delhi",
         "intent": "inform",
         "entities": [
           {
@@ -318,10 +430,10 @@
             "value": "delhi",
             "entity": "location"
           }
-        ],
-        "text": "in delhi"
+        ]
       },
       {
+        "text": "In Delhi.",
         "intent": "inform",
         "entities": [
           {
@@ -330,10 +442,10 @@
             "value": "Delhi",
             "entity": "location"
           }
-        ],
-        "text": "In Delhi."
+        ]
       },
       {
+        "text": "I am looking for some restaurants in Delhi.",
         "intent": "inform",
         "entities": [
           {
@@ -342,10 +454,10 @@
             "value": "Delhi",
             "entity": "location"
           }
-        ],
-        "text": "I am looking for some restaurants in Delhi."
+        ]
       },
       {
+        "text": "I am looking for some restaurants in Delhi",
         "intent": "inform",
         "entities": [
           {
@@ -354,10 +466,10 @@
             "value": "Delhi",
             "entity": "location"
           }
-        ],
-        "text": "I am looking for some restaurants in Delhi"
+        ]
       },
       {
+        "text": "I am looking for some restaurants in mumbai",
         "intent": "inform",
         "entities": [
           {
@@ -366,10 +478,10 @@
             "value": "mumbai",
             "entity": "location"
           }
-        ],
-        "text": "I am looking for some restaurants in mumbai"
+        ]
       },
       {
+        "text": "I am looking for mexican indian fusion",
         "intent": "inform",
         "entities": [
           {
@@ -378,10 +490,10 @@
             "value": "mexican indian fusion",
             "entity": "cuisine"
           }
-        ],
-        "text": "I am looking for mexican indian fusion"
+        ]
       },
       {
+        "text": "can you book a table in rome in a moderate price range with british food for four people",
         "intent": "inform",
         "entities": [
           {
@@ -408,10 +520,10 @@
             "value": "4",
             "entity": "people"
           }
-        ],
-        "text": "can you book a table in rome in a moderate price range with british food for four people"
+        ]
       },
       {
+        "text": "central indian restaurant",
         "intent": "inform",
         "entities": [
           {
@@ -426,54 +538,65 @@
             "value": "indian",
             "entity": "cuisine"
           }
-        ],
-        "text": "central indian restaurant"
+        ]
       },
       {
+        "text": "I am going",
         "intent": "goodbye",
-        "text": "I am going"
+        "entities": []
       },
       {
+        "text": "I am leaving bye",
         "intent": "goodbye",
-        "text": "I am leaving bye"
+        "entities": []
       },
       {
+        "text": "it was nice talking to you",
         "intent": "goodbye",
-        "text": "it was nice talking to you"
+        "entities": []
       },
       {
+        "text": "bye",
         "intent": "goodbye",
-        "text": "bye"
+        "entities": []
       },
       {
+        "text": "goodbye",
         "intent": "goodbye",
-        "text": "goodbye"
+        "entities": []
       },
       {
+        "text": "good bye",
         "intent": "goodbye",
-        "text": "good bye"
+        "entities": []
       },
       {
+        "text": "stop",
         "intent": "deny",
-        "text": "stop"
+        "entities": []
       },
       {
+        "text": "end",
         "intent": "deny",
-        "text": "end"
+        "entities": []
       },
       {
+        "text": "farewell",
         "intent": "goodbye",
-        "text": "farewell"
+        "entities": []
       },
       {
+        "text": "Bye bye",
         "intent": "goodbye",
-        "text": "Bye bye"
+        "entities": []
       },
       {
+        "text": "have a good one",
         "intent": "goodbye",
-        "text": "have a good one"
+        "entities": []
       },
       {
+        "text": "please help me to find restaurants in pune",
         "intent": "inform",
         "entities": [
           {
@@ -482,10 +605,10 @@
             "value": "pune",
             "entity": "location"
           }
-        ],
-        "text": "please help me to find restaurants in pune"
+        ]
       },
       {
+        "text": "I’m hungry. Looking out for some good chinese restaurants in chandigarh",
         "intent": "inform",
         "entities": [
           {
@@ -500,50 +623,60 @@
             "value": "chandigarh",
             "entity": "location"
           }
-        ],
-        "text": "I’m hungry. Looking out for some good chinese restaurants in chandigarh"
+        ]
       },
       {
+        "text": "no. thanks",
         "intent": "deny",
-        "text": "no. thanks"
+        "entities": []
       },
       {
+        "text": "negative",
         "intent": "deny",
-        "text": "negative"
+        "entities": []
       },
       {
+        "text": "no need",
         "intent": "deny",
-        "text": "no need"
+        "entities": []
       },
       {
+        "text": "nah I am ok",
         "intent": "deny",
-        "text": "nah I am ok"
+        "entities": []
       },
       {
+        "text": "no thanks",
         "intent": "deny",
-        "text": "no thanks"
+        "entities": []
       },
       {
+        "text": "nope",
         "intent": "deny",
-        "text": "nope"
+        "entities": []
       },
       {
+        "text": "hell no",
         "intent": "deny",
-        "text": "hell no"
+        "entities": []
       },
       {
+        "text": "wtf",
         "intent": "deny",
-        "text": "wtf"
+        "entities": []
       },
       {
+        "text": "what the fuck",
         "intent": "deny",
-        "text": "what the fuck"
+        "entities": []
       },
       {
+        "text": "yes. Please",
         "intent": "affirm",
-        "text": "yes. Please"
+        "entities": []
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -552,10 +685,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -564,10 +697,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -576,10 +709,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -588,10 +721,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -600,10 +733,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -612,10 +745,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -624,10 +757,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -636,10 +769,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -648,10 +781,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "yes. Please send it to xyz@sth.edu",
         "intent": "send_email",
         "entities": [
           {
@@ -660,10 +793,10 @@
             "value": "xyz@sth.edu",
             "entity": "email"
           }
-        ],
-        "text": "yes. Please send it to xyz@sth.edu"
+        ]
       },
       {
+        "text": "jddk.2jmd@kdl.co.in",
         "intent": "send_email",
         "entities": [
           {
@@ -672,10 +805,10 @@
             "value": "jddk.2jmd@kdl.co.in",
             "entity": "email"
           }
-        ],
-        "text": "jddk.2jmd@kdl.co.in"
+        ]
       },
       {
+        "text": "delhichina@kdl.com",
         "intent": "send_email",
         "entities": [
           {
@@ -684,10 +817,10 @@
             "value": "delhichina@kdl.com",
             "entity": "email"
           }
-        ],
-        "text": "delhichina@kdl.com"
+        ]
       },
       {
+        "text": "<250",
         "intent": "inform",
         "entities": [
           {
@@ -696,10 +829,10 @@
             "value": "250",
             "entity": "budget"
           }
-        ],
-        "text": "<250"
+        ]
       },
       {
+        "text": "ok my email id is anurag@gmail.com",
         "intent": "send_email",
         "entities": [
           {
@@ -708,10 +841,10 @@
             "value": "anurag@gmail.com",
             "entity": "email"
           }
-        ],
-        "text": "ok my email id is anurag@gmail.com"
+        ]
       },
       {
+        "text": "thanks my email address is ankj@asasd.com",
         "intent": "send_email",
         "entities": [
           {
@@ -720,10 +853,10 @@
             "value": "ankj@asasd.com",
             "entity": "email"
           }
-        ],
-        "text": "thanks my email address is ankj@asasd.com"
+        ]
       },
       {
+        "text": "send it to lkjlkhnm@asfd.co.in",
         "intent": "send_email",
         "entities": [
           {
@@ -732,10 +865,10 @@
             "value": "lkjlkhnm@asfd.co.in",
             "entity": "email"
           }
-        ],
-        "text": "send it to lkjlkhnm@asfd.co.in"
+        ]
       },
       {
+        "text": "bot please send to ipwyerh@gma.co.in",
         "intent": "send_email",
         "entities": [
           {
@@ -744,10 +877,10 @@
             "value": "ipwyerh@gma.co.in",
             "entity": "email"
           }
-        ],
-        "text": "bot please send to ipwyerh@gma.co.in"
+        ]
       },
       {
+        "text": "asdasd@gagad.com this is my id",
         "intent": "send_email",
         "entities": [
           {
@@ -756,10 +889,10 @@
             "value": "asdasd@gagad.com",
             "entity": "email"
           }
-        ],
-        "text": "asdasd@gagad.com this is my id"
+        ]
       },
       {
+        "text": "asdasfu@weritp.com my address please send it there",
         "intent": "send_email",
         "entities": [
           {
@@ -768,10 +901,10 @@
             "value": "asdasfu@weritp.com",
             "entity": "email"
           }
-        ],
-        "text": "asdasfu@weritp.com my address please send it there"
+        ]
       },
       {
+        "text": "here is my id anurag@mnail.com",
         "intent": "send_email",
         "entities": [
           {
@@ -780,10 +913,10 @@
             "value": "anurag@mnail.com",
             "entity": "email"
           }
-        ],
-        "text": "here is my id anurag@mnail.com"
+        ]
       },
       {
+        "text": "sure my email id is snurag@fnair.dom",
         "intent": "send_email",
         "entities": [
           {
@@ -792,46 +925,55 @@
             "value": "snurag@fnair.dom",
             "entity": "email"
           }
-        ],
-        "text": "sure my email id is snurag@fnair.dom"
+        ]
       },
       {
+        "text": "naaahh i am ok",
         "intent": "deny",
-        "text": "naaahh i am ok"
+        "entities": []
       },
       {
+        "text": "fuck ok",
         "intent": "deny",
-        "text": "fuck ok"
+        "entities": []
       },
       {
+        "text": "get lost",
         "intent": "deny",
-        "text": "get lost"
+        "entities": []
       },
       {
+        "text": "yeah sure",
         "intent": "affirm",
-        "text": "yeah sure"
+        "entities": []
       },
       {
+        "text": "yes",
         "intent": "affirm",
-        "text": "yes"
+        "entities": []
       },
       {
+        "text": "yes, do  you know my email id",
         "intent": "affirm",
-        "text": "yes, do  you know my email id"
+        "entities": []
       },
       {
+        "text": "cool ok",
         "intent": "affirm",
-        "text": "cool ok"
+        "entities": []
       },
       {
+        "text": "yup",
         "intent": "affirm",
-        "text": "yup"
+        "entities": []
       },
       {
+        "text": "ok",
         "intent": "affirm",
-        "text": "ok"
+        "entities": []
       },
       {
+        "text": "i am looking for an italian restaurent in delhi please send the results to my email id dfresf@ffmall.cdom",
         "intent": "inform",
         "entities": [
           {
@@ -852,10 +994,10 @@
             "value": "dfresf@ffmall.cdom",
             "entity": "email"
           }
-        ],
-        "text": "i am looking for an italian restaurent in delhi please send the results to my email id dfresf@ffmall.cdom"
+        ]
       },
       {
+        "text": "find restaurents in bombay for chinese cusine",
         "intent": "inform",
         "entities": [
           {
@@ -870,10 +1012,10 @@
             "value": "chinese",
             "entity": "cuisine"
           }
-        ],
-        "text": "find restaurents in bombay for chinese cusine"
+        ]
       },
       {
+        "text": "look for restuarent in delhi and send them to my id ghtki@ghesd.wer",
         "intent": "inform",
         "entities": [
           {
@@ -888,10 +1030,10 @@
             "value": "delhi",
             "entity": "location"
           }
-        ],
-        "text": "look for restuarent in delhi and send them to my id ghtki@ghesd.wer"
+        ]
       },
       {
+        "text": "search thai food joints, here is my id for the results qwerrt@asdf.zxc",
         "intent": "inform",
         "entities": [
           {
@@ -906,10 +1048,10 @@
             "value": "thai",
             "entity": "cuisine"
           }
-        ],
-        "text": "search thai food joints, here is my id for the results qwerrt@asdf.zxc"
+        ]
       },
       {
+        "text": "find Mexican food outlets in pune ",
         "intent": "inform",
         "entities": [
           {
@@ -924,10 +1066,10 @@
             "value": "Mexican",
             "entity": "cuisine"
           }
-        ],
-        "text": "find Mexican food outlets in pune "
+        ]
       },
       {
+        "text": "find American food outlets in kolkata ",
         "intent": "inform",
         "entities": [
           {
@@ -942,10 +1084,10 @@
             "value": "kolkata",
             "entity": "location"
           }
-        ],
-        "text": "find American food outlets in kolkata "
+        ]
       },
       {
+        "text": "find North Indian food outlets in chennai",
         "intent": "inform",
         "entities": [
           {
@@ -960,66 +1102,80 @@
             "value": "chennai",
             "entity": "location"
           }
-        ],
-        "text": "find North Indian food outlets in chennai"
+        ]
       },
       {
+        "text": "I’m hungry. Looking out for some good restaurants",
         "intent": "inform",
-        "text": "I’m hungry. Looking out for some good restaurants"
+        "entities": []
       },
       {
+        "text": "help me with food options in my city",
         "intent": "inform",
-        "text": "help me with food options in my city"
+        "entities": []
       },
       {
+        "text": "give me some good food options ",
         "intent": "inform",
-        "text": "give me some good food options "
+        "entities": []
       },
       {
+        "text": "Hola",
         "intent": "greet",
-        "text": "Hola"
+        "entities": []
       },
       {
+        "text": "Bonjour",
         "intent": "greet",
-        "text": "Bonjour"
+        "entities": []
       },
       {
+        "text": "Ciao",
         "intent": "greet",
-        "text": "Ciao"
+        "entities": []
       },
       {
+        "text": "Salve",
         "intent": "greet",
-        "text": "Salve"
+        "entities": []
       },
       {
+        "text": "hey",
         "intent": "greet",
-        "text": "hey"
+        "entities": []
       },
       {
+        "text": "morning",
         "intent": "greet",
-        "text": "morning"
+        "entities": []
       },
       {
+        "text": "hello there",
         "intent": "greet",
-        "text": "hello there"
+        "entities": []
       },
       {
+        "text": "hi there",
         "intent": "greet",
-        "text": "hi there"
+        "entities": []
       },
       {
+        "text": "good afternoon",
         "intent": "greet",
-        "text": "good afternoon"
+        "entities": []
       },
       {
+        "text": "hey bot",
         "intent": "greet",
-        "text": "hey bot"
+        "entities": []
       },
       {
+        "text": "good evening",
         "intent": "greet",
-        "text": "good evening"
+        "entities": []
       },
       {
+        "text": "bengaluru",
         "intent": "inform",
         "entities": [
           {
@@ -1028,10 +1184,10 @@
             "value": "bengaluru",
             "entity": "location"
           }
-        ],
-        "text": "bengaluru"
+        ]
       },
       {
+        "text": "Ahmedabad",
         "intent": "inform",
         "entities": [
           {
@@ -1040,10 +1196,10 @@
             "value": "Ahmedabad",
             "entity": "location"
           }
-        ],
-        "text": "Ahmedabad"
+        ]
       },
       {
+        "text": "its Amritsar,",
         "intent": "inform",
         "entities": [
           {
@@ -1052,10 +1208,10 @@
             "value": "Amritsar",
             "entity": "location"
           }
-        ],
-        "text": "its Amritsar,"
+        ]
       },
       {
+        "text": "i would like to have Thai food",
         "intent": "inform",
         "entities": [
           {
@@ -1064,10 +1220,10 @@
             "value": "Thai",
             "entity": "cuisine"
           }
-        ],
-        "text": "i would like to have Thai food"
+        ]
       },
       {
+        "text": "i wants american dish",
         "intent": "inform",
         "entities": [
           {
@@ -1076,10 +1232,10 @@
             "value": "american",
             "entity": "cuisine"
           }
-        ],
-        "text": "i wants american dish"
+        ]
       },
       {
+        "text": "Meerut",
         "intent": "inform",
         "entities": [
           {
@@ -1088,10 +1244,10 @@
             "value": "Meerut",
             "entity": "location"
           }
-        ],
-        "text": "Meerut"
+        ]
       },
       {
+        "text": "I’ll prefer thai",
         "intent": "inform",
         "entities": [
           {
@@ -1100,10 +1256,10 @@
             "value": "thai",
             "entity": "cuisine"
           }
-        ],
-        "text": "I’ll prefer thai"
+        ]
       },
       {
+        "text": "in Thiruvananthapuram,",
         "intent": "inform",
         "entities": [
           {
@@ -1112,10 +1268,10 @@
             "value": "Thiruvananthapuram",
             "entity": "location"
           }
-        ],
-        "text": "in Thiruvananthapuram,"
+        ]
       },
       {
+        "text": "serve me north indian",
         "intent": "inform",
         "entities": [
           {
@@ -1124,10 +1280,10 @@
             "value": "north indian",
             "entity": "cuisine"
           }
-        ],
-        "text": "serve me north indian"
+        ]
       },
       {
+        "text": "send results to my email id ertsdfgdf@asded.csd.in of mexican restaurents in Agra",
         "intent": "inform",
         "entities": [
           {
@@ -1148,10 +1304,10 @@
             "value": "Agra",
             "entity": "location"
           }
-        ],
-        "text": "send results to my email id ertsdfgdf@asded.csd.in of mexican restaurents in Agra"
+        ]
       },
       {
+        "text": "send some American restaurents to oiuopiokj@sdfsd.asda.sd",
         "intent": "inform",
         "entities": [
           {
@@ -1166,10 +1322,10 @@
             "value": "American",
             "entity": "cuisine"
           }
-        ],
-        "text": "send some American restaurents to oiuopiokj@sdfsd.asda.sd"
+        ]
       },
       {
+        "text": "send a list of restaurents in Kanpur at hunjm@asd.cas",
         "intent": "inform",
         "entities": [
           {
@@ -1184,10 +1340,10 @@
             "value": "Kanpur",
             "entity": "location"
           }
-        ],
-        "text": "send a list of restaurents in Kanpur at hunjm@asd.cas"
+        ]
       },
       {
+        "text": "cheap",
         "intent": "inform",
         "entities": [
           {
@@ -1196,10 +1352,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "cheap"
+        ]
       },
       {
+        "text": "find me a cheap restaurent",
         "intent": "inform",
         "entities": [
           {
@@ -1208,10 +1364,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "find me a cheap restaurent"
+        ]
       },
       {
+        "text": "find me a moderate range restaurent",
         "intent": "inform",
         "entities": [
           {
@@ -1220,10 +1376,10 @@
             "value": "699",
             "entity": "budget"
           }
-        ],
-        "text": "find me a moderate range restaurent"
+        ]
       },
       {
+        "text": "search a list of costly restaurants in delhi",
         "intent": "inform",
         "entities": [
           {
@@ -1238,10 +1394,10 @@
             "value": "701",
             "entity": "budget"
           }
-        ],
-        "text": "search a list of costly restaurants in delhi"
+        ]
       },
       {
+        "text": "find some costly restaurants for thai food",
         "intent": "inform",
         "entities": [
           {
@@ -1256,10 +1412,10 @@
             "value": "thai",
             "entity": "cuisine"
           }
-        ],
-        "text": "find some costly restaurants for thai food"
+        ]
       },
       {
+        "text": "costly",
         "intent": "inform",
         "entities": [
           {
@@ -1268,10 +1424,10 @@
             "value": "701",
             "entity": "budget"
           }
-        ],
-        "text": "costly"
+        ]
       },
       {
+        "text": "moderate",
         "intent": "inform",
         "entities": [
           {
@@ -1280,10 +1436,10 @@
             "value": "699",
             "entity": "budget"
           }
-        ],
-        "text": "moderate"
+        ]
       },
       {
+        "text": "Pocket-Friendly",
         "intent": "inform",
         "entities": [
           {
@@ -1292,10 +1448,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "Pocket-Friendly"
+        ]
       },
       {
+        "text": "Pocket-Friendly restaurant",
         "intent": "inform",
         "entities": [
           {
@@ -1304,10 +1460,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "Pocket-Friendly restaurant"
+        ]
       },
       {
+        "text": "find a Pocket Friendly restaurant ",
         "intent": "inform",
         "entities": [
           {
@@ -1316,10 +1472,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "find a Pocket Friendly restaurant "
+        ]
       },
       {
+        "text": "find pocket friendly restaurant in delhi",
         "intent": "inform",
         "entities": [
           {
@@ -1334,10 +1490,10 @@
             "value": "delhi",
             "entity": "location"
           }
-        ],
-        "text": "find pocket friendly restaurant in delhi"
+        ]
       },
       {
+        "text": "find pocket friendly thai restaurant in chennai",
         "intent": "inform",
         "entities": [
           {
@@ -1358,10 +1514,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "find pocket friendly thai restaurant in chennai"
+        ]
       },
       {
+        "text": "pocket friendly",
         "intent": "inform",
         "entities": [
           {
@@ -1370,10 +1526,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "pocket friendly"
+        ]
       },
       {
+        "text": "pocket-friendly",
         "intent": "inform",
         "entities": [
           {
@@ -1382,10 +1538,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "pocket-friendly"
+        ]
       },
       {
+        "text": "pocket friendly restaurant less than 400 ",
         "intent": "inform",
         "entities": [
           {
@@ -1394,10 +1550,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "pocket friendly restaurant less than 400 "
+        ]
       },
       {
+        "text": "cheap restaurants less than 350",
         "intent": "inform",
         "entities": [
           {
@@ -1406,10 +1562,10 @@
             "value": "399",
             "entity": "budget"
           }
-        ],
-        "text": "cheap restaurants less than 350"
+        ]
       },
       {
+        "text": "less than 490",
         "intent": "inform",
         "entities": [
           {
@@ -1418,10 +1574,10 @@
             "value": "490",
             "entity": "budget"
           }
-        ],
-        "text": "less than 490"
+        ]
       },
       {
+        "text": "in between 90 and 100",
         "intent": "inform",
         "entities": [
           {
@@ -1430,10 +1586,10 @@
             "value": "100",
             "entity": "budget"
           }
-        ],
-        "text": "in between 90 and 100"
+        ]
       },
       {
+        "text": "costly restaurants ",
         "intent": "inform",
         "entities": [
           {
@@ -1442,10 +1598,10 @@
             "value": "701",
             "entity": "budget"
           }
-        ],
-        "text": "costly restaurants "
+        ]
       },
       {
+        "text": "costliest restaurant of mumbai",
         "intent": "inform",
         "entities": [
           {
@@ -1460,10 +1616,10 @@
             "value": "701",
             "entity": "budget"
           }
-        ],
-        "text": "costliest restaurant of mumbai"
+        ]
       },
       {
+        "text": "12323",
         "intent": "inform",
         "entities": [
           {
@@ -1472,10 +1628,10 @@
             "value": "12323",
             "entity": "budget"
           }
-        ],
-        "text": "12323"
+        ]
       },
       {
+        "text": "233",
         "intent": "inform",
         "entities": [
           {
@@ -1484,10 +1640,10 @@
             "value": "233",
             "entity": "budget"
           }
-        ],
-        "text": "233"
+        ]
       },
       {
+        "text": "987",
         "intent": "inform",
         "entities": [
           {
@@ -1496,10 +1652,10 @@
             "value": "987",
             "entity": "budget"
           }
-        ],
-        "text": "987"
+        ]
       },
       {
+        "text": "876",
         "intent": "inform",
         "entities": [
           {
@@ -1508,10 +1664,10 @@
             "value": "876",
             "entity": "budget"
           }
-        ],
-        "text": "876"
+        ]
       },
       {
+        "text": "786",
         "intent": "inform",
         "entities": [
           {
@@ -1520,10 +1676,10 @@
             "value": "786",
             "entity": "budget"
           }
-        ],
-        "text": "786"
+        ]
       },
       {
+        "text": "23456",
         "intent": "inform",
         "entities": [
           {
@@ -1532,10 +1688,10 @@
             "value": "23456",
             "entity": "budget"
           }
-        ],
-        "text": "23456"
+        ]
       },
       {
+        "text": "123",
         "intent": "inform",
         "entities": [
           {
@@ -1544,10 +1700,10 @@
             "value": "123",
             "entity": "budget"
           }
-        ],
-        "text": "123"
+        ]
       },
       {
+        "text": "245",
         "intent": "inform",
         "entities": [
           {
@@ -1556,10 +1712,10 @@
             "value": "245",
             "entity": "budget"
           }
-        ],
-        "text": "245"
+        ]
       },
       {
+        "text": "567",
         "intent": "inform",
         "entities": [
           {
@@ -1568,10 +1724,10 @@
             "value": "567",
             "entity": "budget"
           }
-        ],
-        "text": "567"
+        ]
       },
       {
+        "text": "price range greater than 700",
         "intent": "inform",
         "entities": [
           {
@@ -1580,10 +1736,10 @@
             "value": "700",
             "entity": "budget"
           }
-        ],
-        "text": "price range greater than 700"
+        ]
       },
       {
+        "text": "budget is less than 1000",
         "intent": "inform",
         "entities": [
           {
@@ -1592,10 +1748,10 @@
             "value": "1000",
             "entity": "budget"
           }
-        ],
-        "text": "budget is less than 1000"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1604,10 +1760,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1616,10 +1772,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1628,10 +1784,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1640,10 +1796,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1652,10 +1808,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes at asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1664,10 +1820,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes at asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1676,10 +1832,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1688,10 +1844,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1700,10 +1856,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1712,10 +1868,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1724,10 +1880,10 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
+        ]
       },
       {
+        "text": "yes asd@g.com",
         "intent": "send_email",
         "entities": [
           {
@@ -1736,570 +1892,486 @@
             "value": "asd@g.com",
             "entity": "email"
           }
-        ],
-        "text": "yes asd@g.com"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "mumbai",
-            "entity": "location"
-          }
-        ],
-        "text": "mumbai"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      },
-      {
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 5,
-            "value": "noida",
-            "entity": "location"
-          }
-        ],
-        "text": "noida"
-      }
-    ],
-    "regex_features": [
-      {
-        "name": "greet",
-        "pattern": "hey[^\\s]*"
-      },
-      {
-        "name": "inform",
-        "pattern": "[0-9]*"
-      },
-      {
-        "name": "send_email",
-        "pattern": "^\\w+(\\w+)*\\@(\\w+)*\\.(\\w+)*(.(\\w+)*)?$"
-      }
-    ],
-    "lookup_tables": [],
-    "entity_synonyms": [
-      {
-        "value": "chinese",
-        "synonyms": [
-          "Chinese",
-          "Chines",
-          "chines"
         ]
       },
       {
-        "value": "bangalore",
-        "synonyms": [
-          "Bengaluru",
-          "bengaluru"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "mumbai",
-        "synonyms": [
-          "bombai",
-          "bombay"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "kolkata",
-        "synonyms": [
-          "Calcutta",
-          "calcutta"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "kochi",
-        "synonyms": [
-          "Cochin",
-          "cochin"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "chennai",
-        "synonyms": [
-          "madras",
-          "Madras"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "mysore",
-        "synonyms": [
-          "mysuru",
-          "Mysuru"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "pune",
-        "synonyms": [
-          "Pune",
-          "poona",
-          "Poona"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
         ]
       },
       {
-        "value": "delhi",
-        "synonyms": [
-          "Delhi",
-          "dilli",
-          "new delhi"
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "mumbai",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "mumbai",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
+        ]
+      },
+      {
+        "text": "noida",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "noida",
+            "entity": "location"
+          }
         ]
       }
     ]

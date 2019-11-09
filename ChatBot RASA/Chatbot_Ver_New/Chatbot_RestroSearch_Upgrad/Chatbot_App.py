@@ -1,6 +1,6 @@
 import logging, io, json, warnings
 #logging.basicConfig(level="INFO")
-warnings.filterwarnings('ignore')
+#warnings.filterwarnings('ignore')
 import rasa_nlu
 import rasa_core
 import spacy
@@ -19,7 +19,7 @@ print("Initializing the ChatBot:")
 print("STEP 1:Training the NLU Model")
 #Training the NLU MODEL:
 # loading the nlu training samples
-training_data = load_data("NLU_Train.md")
+training_data = load_data("NLU_Train.json")
 # trainer to create the pipeline
 trainer = Trainer(config.load("NLU_model_Config.yml"))
 # training the model
@@ -42,11 +42,12 @@ print("STEP 3: Starting the Bot")
 from rasa_core.agent import Agent
 agent = Agent.load('models/dialogue', interpreter=model_directory)
 
+
 print("Your bot is ready to talk! Type your messages here or send 'stop'")
 while True:
-    a = input()
+    a = input("You:")
     if a == 'stop':
         break
     responses = agent.handle_message(a)
     for response in responses:
-        print(response["text"])
+        print("Bot: "+response["text"])

@@ -127,7 +127,7 @@ class ZomatoApi:
         response= requests.get(self.api_url+"restaurant",headers=self.header,params=task)
         
 
-    def SearchRestros(self,restro_id):
+    def SearchRestros(self,location_id,cuisine_id,count,budget):
         '''
         RestaurantL3 {
             id (integer, optional): ID of the restaurant ,
@@ -169,46 +169,46 @@ class ZomatoApi:
             rating_color (string, optional): Color hex code used with the rating on Zomato ,
             votes (integer, optional): Number of ratings received
         }
-        Photo {
-            id (string, optional): ID of the photo ,
-            url (string, optional): URL of the image file ,
-            thumb_url (string, optional): URL for 200 X 200 thumb image file ,
-            user (User, optional): User who uploaded the photo ,
-            res_id (integer, optional): ID of restaurant for which the image was uploaded ,
-            caption (string, optional): Caption of the photo ,
-            timestamp (integer, optional): Unix timestamp when the photo was uploaded ,
-            friendly_time (string, optional): User friendly time string; denotes when the photo was uploaded ,
-            width (integer, optional): Image width in pixel; usually 640 ,
-            height (integer, optional): Image height in pixel; usually 640 ,
-            comments_count (integer, optional): Number of comments on photo ,
-            likes_count (integer, optional): Number of likes on photo
-        }
-        Review {
-            rating (number, optional): Rating on scale of 0 to 5 in increments of 0.5 ,
-            review_text (string, optional): Review text ,
-            id (integer, optional): ID of the review ,
-            rating_color (string, optional): Color hex code used with the rating on Zomato ,
-            review_time_friendly (string, optional): User friendly time string corresponding to time of review posting ,
-            rating_text (string, optional): Short description of the rating ,
-            timestamp (integer, optional): Unix timestamp for review_time_friendly ,
-            likes (integer, optional): No of likes received for review ,
-            user (User, optional): User details of author of review ,
-            comments_count (integer, optional): No of comments on review
-        }
-        User {
-            name (string, optional): User's name ,
-            zomato_handle (string, optional): User's @handle; uniquely identifies a user on Zomato ,
-            foodie_level (string, optional): Text for user's foodie level ,
-            foodie_level_num (integer, optional): Number to identify user's foodie level; ranges from 0 to 10 ,
-            foodie_color (string, optional): Color hex code used with foodie level on Zomato ,
-            profile_url (string, optional): URL for user's profile on Zomato ,
-            profile_deeplink (string, optional): short URL for user's profile on Zomato; for use in apps or social sharing ,
-            profile_image (string, optional): URL for user's profile image
-        }
+
         '''
 
-        task={"res_id":restro_id}
-        response= requests.get(self.api_url+"reviews",headers=self.header,params=task)
+        task={"entity_id":location_id,"cuisines":cuisine_id,"sort":"rating","order":"desc"}
+        response= requests.get(self.api_url+"search",headers=self.header,params=task)
+        
+        listOfRestros=json.loads(response.content)
+        listRestro=[]
+        index=0
+        while len(listRestro)<count and index<len(listOfRestros["restaurants"]):
+            restro=listOfRestros["restaurants"][index]["restaurant"]
+            nm=restro.get("name")
+            y=restro.get("user_rating")
+            rating=y.get("aggregate_rating")
+            budget_for_two=restro.get("average_cost_for_two")
+            location=restro.get("location")
+            address=location.get("address")+","+location.get("locality")+","+location.get("city")
+            #fill the price range: A= <300, B= 300<=x<=700, C= >700
+            if((budget=="A" and budget_for_two<300) or(budget=="B" and budget_for_two>=300 and  budget_for_two>=700 ) or (budget=="C" and budget_for_two>700 )):
+                listRestro.append(ResturantInfo(nm,address,rating,budget_for_two))
+            index+=1
+        listStr=""
+        if(len(listRestro)==0 or len(listOfRestros["restaurants"])==0):
+            listStr="Sorry, We could not find any Restaurants in for your specified budget"
+        else:
+            for r in listRestro:
+                if(count==5):
+                    Str=r.name
+                    Str+=" in "
+                    Str+=r.address
+                    Str+=" has been rated "+str(r.avg_rating)
+                else:
+                    Str=r.name
+                    Str+=" in "
+                    Str+=r.address
+                    Str+=" has been rated "+str(r.avg_rating)
+                    Str+=". The budget for two is "+ str(r.budget)
+                Str+="\n"
+                listStr+=Str
+        return listStr
         
 
     def GetReviews(self, restro_id):
@@ -240,5 +240,22 @@ class ZomatoApi:
         }
         '''
         task={"res_id":restro_id}
-        response= requests.get(self.api_url+"search",headers=self.header,params=task)
+        response= requests.get(self.api_url+"reviews",headers=self.header,params=task)
+        
+class ResturantInfo:
+    def __init__(self,name,address,avg_rating,budget):
+        self.name=name
+        self.address=address
+        self.avg_rating=avg_rating
+        self.budget=budget
+
+
+
+
+if __name__ == "__main__":
+    apiCaller=ZomatoApi()
+    x=apiCaller.SearchRestros(29,1,5,'A')
+    print(x)
+    x=apiCaller.SearchRestros(29,1,10,'C')
+    print(x)
         
