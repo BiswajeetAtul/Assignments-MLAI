@@ -10,7 +10,7 @@ t = 24 # number of hours, ranges from 0 .... t-1
 d = 7  # number of days, ranges from 0 ... d-1
 C = 5 # Per hour fuel and other costs
 R = 9 # per hour revenue from a passenger
-
+##############
 
 class CabDriver():
 
