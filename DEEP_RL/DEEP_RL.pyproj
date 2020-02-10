@@ -24,5 +24,8 @@
   <ItemGroup>
     <InterpreterReference Include="CondaEnv|CondaEnv|ReinforcementLearning" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TM.npy" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

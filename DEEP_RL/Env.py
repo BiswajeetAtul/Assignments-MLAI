@@ -3,41 +3,53 @@
 import numpy as np
 import math
 import random
+from itertools import permutations
 
 # Defining hyperparameters
-m = 5 # number of cities, ranges from 1 ..... m
-t = 24 # number of hours, ranges from 0 .... t-1
-d = 7  # number of days, ranges from 0 ... d-1
+no_of_locations = 5 # number of cities, ranges from 1 ..... m
+no_of_hours = 24 # number of hours, ranges from 0 .... t-1
+no_of_days = 7  # number of days, ranges from 0 ... d-1
 C = 5 # Per hour fuel and other costs
 R = 9 # per hour revenue from a passenger
 ##############
+class items(Enum):
+    loc="loc"
+    time="time"
+    day="day"
+    pickup="pickup"
+    drop="drop"
 
 class CabDriver():
 
     def __init__(self):
         """initialise your state and define your action space and state space"""
-        self.action_space = []
-        self.state_space = []
-        self.state_init = []
-
+        # (0,0) signifies that the cab driver goes offline.
+        # permutations function gives  (𝑚 − 1) ∗ 𝑚 + 1 items for m locations.
+        self.action_space = [(0,0)]+list(permutations([i for i in range(no_of_locations)],2))
+        # state space is a tuple of combinations of location,hours,days
+        self.state_space = [(x,y,z) for x in range(no_of_locations) for y in range(no_of_hours) for z in range(no_of_days)]
+        # the initial state is randomly selected.
+        self.state_init = random.choice(self.state_space)
         # Start the first round
         self.reset()
-
 
     ## Encoding state (or state-action) for NN input
 
     def state_encod_arch1(self, state):
-        """convert the state into a vector so that it can be fed to the NN. This method converts a given state into a vector format. Hint: The vector is of size m + t + d."""
-
+    #    """convert the state into a vector so that it can be fed to the NN. This method converts a given state into a vector format. Hint: The vector is of size m + t + d."""
+        state_encode=[0]*(no_of_locations+no_of_hours+no_of_days)    
+        state_encode[self.get_set_state_action(state,items.loc)]=1
+        state_encode[no_of_locations+ self.get_set_state_action(state,items.time)]=1
+        state_encode[no_of_locations+no_of_hours+ lf.get_set_state_action(state,items.day)]=1
         return state_encod
 
 
     # Use this function if you are using architecture-2 
-     def state_encod_arch2(self, state, action):
-         """convert the (state-action) into a vector so that it can be fed to the NN. This method converts a given state-action pair into a vector format. Hint: The vector is of size m + t + d + m + m."""
+    #def state_encod_arch2(self, state, action):
+    #     """convert the (state-action) into a vector so that it can be fed to the NN. This method converts a given state-action pair into a vector format. Hint: The vector is of size m + t + d + m + m."""
 
         
-         return state_encod
+    #     return state_encod
 
 
     ## Getting number of requests
@@ -85,3 +97,18 @@ class CabDriver():
 
     def reset(self):
         return self.action_space, self.state_space, self.state_init
+
+    def get_set_state_action(self, item_list, get_item=None, set_item=None,set_item_val=None):
+        if(get_item==items.loc or get_item==items.pickup):
+            return item_list[0]
+        elif(get_item==items.time or get_item==items.drop):
+            return item_list[1]
+        elif(get_item==items.day):
+            return item_list[2]
+        elif(set_item==items.loc or set_item==items.pickup):
+            item_list[0]=set_item_val
+        elif(set_item==items.time or set_items==items.drop):
+            item_list[1]=set_item_val
+        elif(set_item==items.day):
+            item_list[2]=set_item_val
+
