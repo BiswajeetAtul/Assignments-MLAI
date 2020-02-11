@@ -60,24 +60,25 @@ class CabDriver():
         location = state[0]
         if location == 0:
             requests = np.random.poisson(2)
-
-
-
-
-
-
-
+        elif location == 1:
+            requests = np.random.poisson(12)
+        elif location == 2:
+            requests = np.random.poisson(4)
+        elif location == 3:
+            requests = np.random.poisson(7)
+        elif location == 4:
+            requests = np.random.poisson(8)
 
         if requests >15:
             requests =15
 
-        possible_actions_index = random.sample(range(1, (m-1)*m +1), requests) # (0,0) is not considered as customer request
+        possible_actions_idx = random.sample(range(1, (m-1)*m +1), requests) # (0,0) is not considered as customer request
         actions = [self.action_space[i] for i in possible_actions_idx]
 
         
         actions.append([0,0])
 
-        return possible_actions_index,actions   
+        return possible_actions_idx,actions   
 
 
 
