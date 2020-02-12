@@ -87,7 +87,7 @@ class CabDriver():
 
 
 
-    def rewardFunc(self, state, action, Time_matrix):
+    def rewardFunc(self, state, action, time_idle, time_transit, time_ride):
         """Takes in state, action and Time-matrix and returns the reward"""
         """
             Objective: Maximize the reward of the Driver.
@@ -96,38 +96,34 @@ class CabDriver():
                             (revenue earned from pickup point 𝑝 to drop point 𝑞) - (Cost of battery used in moving from pickup point 𝑝 to drop point 𝑞) - 
                             (Cost of battery used in moving from current point 𝑖 to pick-up point 𝑝)
         """
-        ride_time = None
-        idle_time = None
-        reward = (R * ride_time) - (C * (ride_time + idle_time))
+
+
+        reward = (R * time_ride) - (C * (time_idle+ time_transit+ time_ride))
 
         return reward
 
-    def updateTimeDay(self, time, day, ride_duration):
+    def updateTimeDay(self, current_time, current_day, ride_duration):
         """
         Takes in the current state and time taken for driver's journey to return
         the state post that journey.
         """
         ride_duration = int(ride_duration)
 
-        if (time + ride_duration) < 24:
-            time = time + ride_duration
-            # day is unchanged
+        if (current_time + ride_duration) < 24:
+            # the day wont change.
+            current_time += ride_duration
         else:
-            # duration taken spreads over to subsequent days
-            # convert the time to 0-23 range
-            time = (time + ride_duration) % 24 
-            
-            # Get the number of days
-            num_days = (time + ride_duration) // 24
-            
+            #the day changes
+            current_time = (current_time + ride_duration) % 24        
+            num_of_days = (current_time + ride_duration) // 24
             # Convert the day to 0-6 range
-            day = (day + num_days) % 7
+            current_day = (current_day + num_of_days) % 7
 
-        return time, day
+        return current_time, current_day
 
 
     def nextStateFunc(self, state, action, Time_matrix):
-        """Takes state and action as input and returns next state"""
+        """Takes state and action as input and returns next state, rewards, total time"""
         next_state = []
 
         #Time taken from pickup point 𝑝 to drop point 𝑞
@@ -162,19 +158,26 @@ class CabDriver():
         if(pickup_location == 0 and drop_location == 0):
             # the time increases
             time_for_idle_refusal = 1
-            
+            next_location=current_location
         elif(pickup_location == current_location):
             # the driver is alreacy at p
-            time_for_idle_refusal = 0
-            time_for_transit = 0
-            time_for_ride = Time_matrix[current_location][drop_location][current_time][current_day]
+            #time_for_idle_refusal = 0
+            #time_for_transit = 0
+            time_for_ride = Time_matrix[current_location][pickup_location][current_time][current_day]
         else:
             time_for_transit = Time_matrix[current_location][pickup_location][current_time][current_day]
-            new_date,new_day = self.updateTimeDay(current_time,current_day,time_for_transit)
-            time_for_ride = Time_matrix[current_location][drop_location][current_time][current_day]
-            
+            new_time,new_day = self.updateTimeDay(current_time,current_day,time_for_transit)
+            time_for_ride = Time_matrix[pickup_location][drop_location][new_time][new_day]
+            #next_location=drop_location
+        
+        # making the final calculations:
+        total_time_overall=(time_for_idle_refusal+time_for_ride+time_for_transit)
+        next_time,next_day=self.updateTimeDay(current_time,current_day,total_time_overall)
 
-        return next_state
+        next_state=[next_location,next_time,next_day]
+
+        reward=self.rewardFunc(state,action,time_for_idle_refusal,time_for_transit,time_for_ride)
+        return next_state, reward, total_time_overall
 
 
 
@@ -199,10 +202,19 @@ class CabDriver():
 
 def main():
     cdObj = CabDriver()
-    print("Done?")
-    time_matrix = np.load("TM.npy")
-    cdObj.nextStateFunc(cdObj.state_init,(0,0),time_matrix)
-    print("Done?")
+    state=cdObj.state_init
+    total_reward=0
+    total_time=0
+    time_matrix=np.load("TM.npy")
+    while(state[2]<30):
+        new_action=random.choice(cdObj.state_space)
+        state,reward,time=cdObj.nextStateFunc(state,new_action,time_matrix)
+        total_reward+=reward
+        total_time+=time
+        print("State: ",state)
+        print("total Rewards till now:",total_reward)
+        print("total time spent till now:",total_time)
+
 
 if __name__ == "__main__":
     sys.exit(int(main() or 0))
