@@ -77,7 +77,7 @@ class CabDriver():
         if requests > 15:
             requests = 15
 
-        possible_actions_idx = random.sample(range(1, (m - 1) * m + 1), requests) # (0,0) is not considered as customer request
+        possible_actions_idx = random.sample(range(1, (no_of_locations - 1) * no_of_locations + 1), requests) # (0,0) is not considered as customer request
         actions = [self.action_space[i] for i in possible_actions_idx]
 
         
@@ -206,8 +206,12 @@ def main():
     total_reward=0
     total_time=0
     time_matrix=np.load("TM.npy")
-    while(state[2]<30):
-        new_action=random.choice(cdObj.state_space)
+    while(total_time<720):
+        print("Current state:",state)
+        possible_actions_idx,possible_actions=cdObj.requests(state)
+        print("possible actions:",possible_actions)
+        new_action=random.choice(possible_actions)
+        print("chosen action:",new_action)
         state,reward,time=cdObj.nextStateFunc(state,new_action,time_matrix)
         total_reward+=reward
         total_time+=time
