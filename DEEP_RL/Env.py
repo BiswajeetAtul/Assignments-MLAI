@@ -80,7 +80,7 @@ class CabDriver():
         possible_actions_idx = random.sample(range(1, (no_of_locations - 1) * no_of_locations + 1), requests) # (0,0) is not considered as customer request
         actions = [self.action_space[i] for i in possible_actions_idx]
 
-        
+        possible_actions_idx.append(0)
         actions.append([0,0])
 
         return possible_actions_idx,actions   
@@ -209,6 +209,7 @@ def main():
     while(total_time<720):
         print("Current state:",state)
         possible_actions_idx,possible_actions=cdObj.requests(state)
+        print("indexed:",possible_actions_idx)
         print("possible actions:",possible_actions)
         new_action=random.choice(possible_actions)
         print("chosen action:",new_action)

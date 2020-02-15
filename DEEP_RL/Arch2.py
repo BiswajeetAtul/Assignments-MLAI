@@ -17,7 +17,7 @@ from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 
 # Import the environment
-from Env import CabDriver
+from Env import *
 
 # Loading the time matrix provided
 Time_matrix = np.load("TM.npy")
@@ -53,12 +53,7 @@ class DQNAgent:
 
     # approximate Q function using Neural Network
     def build_model(self):
-        """
-        Function that takes in the agent and constructs the network
-        to train it
-        @return model
-        @params agent
-        """
+
         input_shape = self.state_size
         model = Sequential()
         # Write your code here: Add layers to your neural nets       
@@ -73,7 +68,7 @@ class DQNAgent:
     def get_action(self, state, possible_actions_index, actions):
         """
         get action in a state according to an epsilon-greedy approach
-        possible_actions_index, actions are the 'ride requests' that teh driver got.
+        possible_actions_index, actions are the 'ride requests' that the driver got.
         """        
         # get action from model using epsilon-greedy policy
         # Decay in ε after each episode       
