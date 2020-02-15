@@ -41,10 +41,10 @@ class CabDriver():
     #    This method converts a given state into a vector format.  Hint: The
     #    vector is of size m + t + d."""
         state_encode = [0] * (no_of_locations + no_of_hours + no_of_days)    
-        state_encode[self.get_set_state_action(state,items.loc)] = 1
-        state_encode[no_of_locations + self.get_set_state_action(state,items.time)] = 1
-        state_encode[no_of_locations + no_of_hours + lf.get_set_state_action(state,items.day)] = 1
-        return state_encod
+        state_encode[self.getSetStateAction(state,items.loc)] = 1
+        state_encode[no_of_locations + self.getSetStateAction(state,items.time)] = 1
+        state_encode[no_of_locations + no_of_hours + self.getSetStateAction(state,items.day)] = 1
+        return state_encode
 
 
     # Use this function if you are using architecture-2
